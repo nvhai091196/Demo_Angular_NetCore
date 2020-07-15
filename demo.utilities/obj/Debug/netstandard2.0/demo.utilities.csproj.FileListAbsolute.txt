@@ -1,0 +1,8 @@
+D:\MyProject\Angular\demo.utilities\bin\Debug\netstandard2.0\demo.utilities.deps.json
+D:\MyProject\Angular\demo.utilities\bin\Debug\netstandard2.0\demo.utilities.dll
+D:\MyProject\Angular\demo.utilities\bin\Debug\netstandard2.0\demo.utilities.pdb
+D:\MyProject\Angular\demo.utilities\obj\Debug\netstandard2.0\demo.utilities.csprojAssemblyReference.cache
+D:\MyProject\Angular\demo.utilities\obj\Debug\netstandard2.0\demo.utilities.AssemblyInfoInputs.cache
+D:\MyProject\Angular\demo.utilities\obj\Debug\netstandard2.0\demo.utilities.AssemblyInfo.cs
+D:\MyProject\Angular\demo.utilities\obj\Debug\netstandard2.0\demo.utilities.dll
+D:\MyProject\Angular\demo.utilities\obj\Debug\netstandard2.0\demo.utilities.pdb

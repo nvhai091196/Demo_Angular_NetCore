@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="DeleteConfirmation" xml:space="preserve">
+    <value>Xác nhận xoá</value>
+  </data>
+    <data name="BackToList" xml:space="preserve">
+    <value>Quay lại</value>
+  </data>
+ <data name="Delete" xml:space="preserve">
+    <value>Xoá</value>
+  </data>
+</root>

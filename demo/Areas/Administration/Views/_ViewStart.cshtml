@@ -1,0 +1,12 @@
+@{
+    var popup= Context.Request.Query["IsPopup"];
+    bool IsPopup =  !string.IsNullOrEmpty(popup) ;
+    if (IsPopup)
+    {
+        Layout = "~/Views/Shared/Backend/Dashforge/_LayoutPopup.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/Backend/Dashforge/_Layout.cshtml";
+    }
+}

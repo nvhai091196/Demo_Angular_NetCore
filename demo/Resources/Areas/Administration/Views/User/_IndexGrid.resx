@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+         <data name="UserName" xml:space="preserve">
+    <value>UserName</value>
+  </data>
+
+  <data name="FullName" xml:space="preserve">
+    <value>FullName</value>
+  </data>
+
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+
+  <data name="Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+
+  <data name="Mobile" xml:space="preserve">
+    <value>Mobile</value>
+  </data>
+
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+
+  <data name="IsAdmin" xml:space="preserve">
+    <value>IsAdmin</value>
+  </data>
+
+  <data name="LANG" xml:space="preserve">
+    <value>LANG</value>
+  </data>
+
+  <data name="StypeId" xml:space="preserve">
+    <value>StypeId</value>
+  </data>
+
+  <data name="About" xml:space="preserve">
+    <value>About</value>
+  </data>
+
+  <data name="FacebookUrl" xml:space="preserve">
+    <value>FacebookUrl</value>
+  </data>
+
+  <data name="TwiterUrl" xml:space="preserve">
+    <value>TwiterUrl</value>
+  </data>
+
+  <data name="DateOfBirth" xml:space="preserve">
+    <value>DateOfBirth</value>
+  </data>
+
+  <data name="SocialNo" xml:space="preserve">
+    <value>SocialNo</value>
+  </data>
+
+  <data name="SocialRegisterDate" xml:space="preserve">
+    <value>SocialRegisterDate</value>
+  </data>
+
+  <data name="SocialRegisterProvince" xml:space="preserve">
+    <value>SocialRegisterProvince</value>
+  </data>
+
+  <data name="PermanentAddress" xml:space="preserve">
+    <value>PermanentAddress</value>
+  </data>
+
+  <data name="Photo" xml:space="preserve">
+    <value>Photo</value>
+  </data>
+
+  <data name="FCMToken" xml:space="preserve">
+    <value>FCMToken</value>
+  </data>
+
+
+<!--[FieldTemplates]-->
+</root>

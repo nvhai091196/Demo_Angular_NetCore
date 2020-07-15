@@ -1,0 +1,40 @@
+@using NonFactors.Mvc.Grid
+@{
+ViewBag.Title = Localizer["IndexUser"]?.Value;
+}
+@section Breadcrumb{
+<ol class="breadcrumb df-breadcrumbs mg-b-10">
+    <li class="breadcrumb-item">@ViewBag.Title</li>
+</ol>
+}
+<div class="search-panel mb-2">
+    <div class="row">
+        <div class="col-md-3">
+            @Html.TextBox("SearchKey", "", new { placeholder = SharedLocalizer["SearchKey"]?.Value, @class = "form-control" })
+        </div>
+        <div class="col-md-9">
+               <div class="float-right">
+             <a asp-controller="User" asp-action="Create" asp-route-Callback="ReloadUser" class="btn btn-primary popup-link" data-popup-title="@SharedLocalizer["Create"]?.Value" data-popup-size="lg"><i class="fas fa-plus"></i> @SharedLocalizer["Create"]?.Value</a>
+ <button  onclick="DeleteRange($('#form-grid'));" class="btn btn-danger btn-md hidden-xs popup-link btn-delete-range d-none" data-popup-title="@SharedLocalizer["Confirm"]?.Value"  data-allow-mobile="true"><i class="fas fa-trash" title="@SharedLocalizer["Delete"]?.Value"></i> @SharedLocalizer["Delete"]?.Value</button>
+            </div>
+        </div>
+    </div>
+</div>
+<form asp-controller="User" asp-action="DeleteRange" id="form-grid"
+      data-ajax="true" data-ajax-method="POST" 
+      data-ajax-success="ReloadUser">
+     @Html.AjaxGrid(Url.Action("IndexGrid"))
+</form>
+<script>
+    document.getElementById('SearchKey').addEventListener('input', function ()
+{
+        var grid = new MvcGrid(document.querySelector('.mvc-grid'));
+       grid.url.searchParams.set('SearchKey', this.value);
+        grid.reload();
+    });
+
+    function ReloadUser()
+{
+        new MvcGrid(document.querySelector('.mvc-grid')).reload(); 
+    }
+</script>

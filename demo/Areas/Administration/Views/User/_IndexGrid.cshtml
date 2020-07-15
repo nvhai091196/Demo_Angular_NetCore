@@ -1,0 +1,89 @@
+@model IEnumerable<UserViewModel>
+@using NonFactors.Mvc.Grid
+@{
+    string page = Context.Request.Query["page"];
+    string rows = Context.Request.Query["rows"];
+    var pageIndex = string.IsNullOrEmpty(page) ? "1" : page;
+    int defaultPageSize = 10;
+    var rowsIndex = string.IsNullOrEmpty(rows) ? defaultPageSize : Convert.ToInt32(rows) ;
+    int index = (int.Parse(pageIndex) - 1) * rowsIndex;
+}
+@{
+Func<HelperResult> RenderSelectAll = () => new Func<object, HelperResult>
+    (@<text>
+        <vc:select-all >
+        </vc:select-all>
+    </text>)
+(null);
+}
+@{
+Func<int ,HelperResult> RenderCheckbox = (id) => new Func<object, HelperResult>
+    (@<text>
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" name="Selected[]" value="@id" id="Selected_@(id)_">
+            <label class="custom-control-label" for="Selected_@(id)_"></label>
+        </div>
+    </text>)
+(null);
+}
+@{
+Func<int, string ,HelperResult> GridColumnName = (id, name) => new Func<object, HelperResult>
+    (@<text>
+         <a asp-controller="User" asp-action="Details" asp-route-Id="@id" class="popup-link" data-popup-title="@SharedLocalizer["Details"]?.Value"  data-popup-size="lg"> @name</a>
+    </text>)
+(null);
+}
+@{
+Func<UserViewModel, HelperResult> CommandColumn = (m) => new Func<object, HelperResult>
+    (@<text>
+ <div class="dropdown">
+            <a class="dropdown-toggle" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu"> 
+        <a asp-controller="User" asp-action="Edit" asp-route-Id="@m.Id" asp-route-Callback="ReloadUser" class="dropdown-item popup-link text-info" data-popup-title="@SharedLocalizer["Edit"]?.Value"  data-popup-size="lg"><i class="fas fa-edit" title="@SharedLocalizer["Edit"]?.Value"></i> @SharedLocalizer["Edit"]?.Value</a>
+        <a asp-controller="User" asp-action="Delete" asp-route-Id="@m.Id" asp-route-Callback="ReloadUser" class="dropdown-item popup-link text-danger" data-popup-title="@SharedLocalizer["Confirm"]?.Value"  data-allow-mobile="true"><i class="fas fa-trash" title="@SharedLocalizer["Delete"]?.Value"></i> @SharedLocalizer["Delete"]?.Value</a>
+            </div>
+ </div>
+  </text>)
+(null);
+}
+
+@(Html.Grid(Model).Build(columns =>
+{
+     columns.Add().Titled(RenderSelectAll()).Encoded(true).RenderedAs(n => RenderCheckbox(n.Id)).Css("w-50px");
+    columns.Add().Titled("#").RenderedAs(n => (++index).ToString()).Css("w-50px");
+    //columns.Add(foo => foo.Name).Titled(Localizer["Name"]?.Value).Encoded(false).RenderedAs(n=> GridColumnName(n.Id, n.Name));
+         columns.Add(foo => foo.UserName).Titled(SharedLocalizer["UserName"]?.Value).Encoded(false);
+    columns.Add(foo => foo.FullName).Titled(SharedLocalizer["FullName"]?.Value).Encoded(false);
+    columns.Add(foo => foo.Email).Titled(SharedLocalizer["Email"]?.Value).Encoded(false);
+    columns.Add(foo => foo.Address).Titled(SharedLocalizer["Address"]?.Value).Encoded(false);
+    columns.Add(foo => foo.Mobile).Titled(SharedLocalizer["Mobile"]?.Value).Encoded(false);
+    columns.Add(foo => foo.Status).Titled(SharedLocalizer["Status"]?.Value).Encoded(false);
+    columns.Add(foo => foo.IsAdmin).Titled(SharedLocalizer["IsAdmin"]?.Value).Encoded(false);
+    columns.Add(foo => foo.LANG).Titled(SharedLocalizer["LANG"]?.Value).Encoded(false);
+    columns.Add(foo => foo.StypeId).Titled(SharedLocalizer["StypeId"]?.Value).Encoded(false);
+    columns.Add(foo => foo.About).Titled(SharedLocalizer["About"]?.Value).Encoded(false);
+    columns.Add(foo => foo.FacebookUrl).Titled(SharedLocalizer["FacebookUrl"]?.Value).Encoded(false);
+    columns.Add(foo => foo.TwiterUrl).Titled(SharedLocalizer["TwiterUrl"]?.Value).Encoded(false);
+    columns.Add(foo => foo.DateOfBirth).Titled(SharedLocalizer["DateOfBirth"]?.Value).Encoded(false);
+    columns.Add(foo => foo.SocialNo).Titled(SharedLocalizer["SocialNo"]?.Value).Encoded(false);
+    columns.Add(foo => foo.SocialRegisterDate).Titled(SharedLocalizer["SocialRegisterDate"]?.Value).Encoded(false);
+    columns.Add(foo => foo.SocialRegisterProvince).Titled(SharedLocalizer["SocialRegisterProvince"]?.Value).Encoded(false);
+    columns.Add(foo => foo.PermanentAddress).Titled(SharedLocalizer["PermanentAddress"]?.Value).Encoded(false);
+    columns.Add(foo => foo.Photo).Titled(SharedLocalizer["Photo"]?.Value).Encoded(false);
+    columns.Add(foo => foo.FCMToken).Titled(SharedLocalizer["FCMToken"]?.Value).Encoded(false);
+
+//[FieldTemplates]
+    columns.Add(foo => foo.ModifiedDate).Titled(SharedLocalizer["ModifiedDate"]?.Value).Formatted("{0:dd/MM/yyyy HH:mm}").Css("w-180px");
+    columns.Add(foo => foo.Id).Titled(String.Empty).RenderedAs(m => CommandColumn(m)).Encoded(false).Css("w-50px");
+})
+.Empty(SharedLocalizer["NoData"]?.Value)
+.Sortable()
+.Pageable(pager =>
+{
+    pager.PageSizes = new Dictionary<Int32, String>
+    { { 5, "5" }, { 10, "10" },{ 15, "15" }, { 20, "20" }, { 50, "50" }, {0, SharedLocalizer["All"]?.Value } };
+    pager.ShowPageSizes = true;
+    pager.PagesToDisplay = 5;
+    pager.RowsPerPage = defaultPageSize;
+})
+)

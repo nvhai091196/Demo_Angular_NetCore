@@ -1,0 +1,13 @@
+@model demo.domain.Models.Administration.User
+
+@{
+    ViewBag.Title = SharedLocalizer["Delete"]?.Value;
+}
+<h4>@SharedLocalizer["DeleteConfirmation"]?.Value</h4>
+<div data-label="@ViewBag.Title" class="df-example demo-forms">
+    <form asp-controller="User" asp-action="Delete" asp-route-Callback=@Context.Request.Query["Callback"]
+        asp-route-IsPopup=@Context.Request.Query["IsPopup"] enctype="multipart/form-data" method="POST" >
+        @Html.HiddenFor(m=> m.Id)
+        <button type="submit" class="btn btn-danger"><i class="fa fa-remove"></i> @SharedLocalizer["Delete"]</button>
+    </form>
+</div>

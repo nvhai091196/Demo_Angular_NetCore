@@ -1,4 +1,6 @@
-export interface Hero{
-  id: number,
-  name: string
+export class Hero {
+  date: Date;
+  temperatureC: number;
+  temperatureF: number;
+  summary: number;
 }

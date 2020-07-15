@@ -1,0 +1,136 @@
+@model UserViewModel
+@{
+    ViewBag.Title = Localizer["DetailsUser"]?.Value;
+}
+@section Breadcrumb{
+    <ol class="breadcrumb df-breadcrumbs mg-b-10">
+        <li class="breadcrumb-item">@ViewBag.Title</li>
+        <li class="breadcrumb-item back-index">
+            <a href="@Context.Request.Headers[" Referer"].ToString()">@SharedLocalizer["BackToList"]?.Value</a>
+        </li>
+    </ol>
+}
+ 
+<div class="card mt-2">
+    <div class="card-body">
+        <dl class="dl-horizontal clearfix">
+                      <dt>
+                @Html.DisplayNameFor(model => model.UserName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.UserName)
+            </dd>
+           <dt>
+                @Html.DisplayNameFor(model => model.FullName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.FullName)
+            </dd>
+           <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+           <dt>
+                @Html.DisplayNameFor(model => model.Address)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Address)
+            </dd>
+           <dt>
+                @Html.DisplayNameFor(model => model.Mobile)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Mobile)
+            </dd>
+           <dt>
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Status)
+            </dd>
+           <dt>
+                @Html.DisplayNameFor(model => model.IsAdmin)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.IsAdmin)
+            </dd>
+           <dt>
+                @Html.DisplayNameFor(model => model.LANG)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.LANG)
+            </dd>
+           <dt>
+                @Html.DisplayNameFor(model => model.StypeId)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.StypeId)
+            </dd>
+           <dt>
+                @Html.DisplayNameFor(model => model.About)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.About)
+            </dd>
+           <dt>
+                @Html.DisplayNameFor(model => model.FacebookUrl)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.FacebookUrl)
+            </dd>
+           <dt>
+                @Html.DisplayNameFor(model => model.TwiterUrl)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.TwiterUrl)
+            </dd>
+           <dt>
+                @Html.DisplayNameFor(model => model.DateOfBirth)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.DateOfBirth)
+            </dd>
+           <dt>
+                @Html.DisplayNameFor(model => model.SocialNo)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.SocialNo)
+            </dd>
+           <dt>
+                @Html.DisplayNameFor(model => model.SocialRegisterDate)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.SocialRegisterDate)
+            </dd>
+           <dt>
+                @Html.DisplayNameFor(model => model.SocialRegisterProvince)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.SocialRegisterProvince)
+            </dd>
+           <dt>
+                @Html.DisplayNameFor(model => model.PermanentAddress)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.PermanentAddress)
+            </dd>
+           <dt>
+                @Html.DisplayNameFor(model => model.Photo)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Photo)
+            </dd>
+           <dt>
+                @Html.DisplayNameFor(model => model.FCMToken)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.FCMToken)
+            </dd>
+
+<!--[FieldTemplates]-->
+        </dl>
+    </div>
+</div>
+  
